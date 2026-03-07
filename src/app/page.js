@@ -4,20 +4,24 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Partners from "@/components/Partners";
-import Submission from "@/components/Submission";
 import Team from "@/components/Team";
+import ParticlesBackground from "@/components/ParticlesBackground";
+import Research from "@/components/Research";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-zinc-50 font-sans dark:bg-black">
-      <Navbar />
-      <Hero />
-      <About />
-      <Submission />
-      <Team />
-      <Partners />
-      <Contact />
-      <Footer />
+    <div className="relative min-h-screen bg-zinc-50 font-sans dark:bg-black">
+      <ParticlesBackground />
+      <div className="relative">
+        <Navbar />
+        <Hero />
+        <About />
+        <Research />
+        <Team />
+        <Partners />
+        <Contact />
+        <Footer />
+      </div>
     </div>
   );
 }
