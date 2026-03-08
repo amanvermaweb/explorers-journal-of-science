@@ -1,4 +1,5 @@
 import { Inter, Space_Grotesk } from "next/font/google";
+import { siteMetadata } from "@/content/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -11,10 +12,7 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  title: "The Explorer's Journal of Science",
-  description: "A student led Stem Journal",
-};
+export const metadata = siteMetadata;
 
 export default function RootLayout({ children }) {
   return (

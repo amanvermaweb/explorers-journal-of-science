@@ -1,70 +1,71 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-
-const partners = [
-  {
-    name: "STEMise Community",
-    logo: "/partner1.png",
-    description:
-      "A community dedicated to promoting STEM education and diversity.",
-  },
-  {
-    name: "Minorities in STEM",
-    logo: "/partner2.png",
-    description:
-      "An organization focused on supporting underrepresented groups in STEM fields.",
-  },
-  {
-    name: "Team Neuron",
-    logo: "/partner3.png",
-    description:
-      "A student-led initiative that fosters collaboration and innovation in neuroscience research.",
-  },
-];
+import Section, {
+  OutlineCard,
+  SurfaceCard,
+  accentThemes,
+  joinClasses,
+} from "@/components/Section";
+import { partnersContent } from "@/content/site";
 
 export default function Partners() {
+  const { id, title, intro, items, partnershipEmail } = partnersContent;
+
   return (
-    <section id="partners" className="px-6 py-20 sm:px-10 lg:px-16 lg:py-24">
-      <div className="mx-auto max-w-6xl">
-        <h2 className="text-3xl font-semibold text-primary sm:text-4xl dark:text-text-primary">
-          Partners
-        </h2>
-        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {partners.map((partner, index) => (
-            <article
-              key={index}
-              className="rounded-3xl border border-primary/15 p-6 shadow-[0_12px_30px_rgba(59,130,246,0.08)] transition duration-200 even:border-secondary/20 even:shadow-[0_12px_30px_rgba(34,211,238,0.08)] dark:border-primary/15 dark:even:border-secondary/20"
+    <Section id={id} title={title} intro={intro}>
+      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {items.map((partner, index) => {
+          const accent = index % 2 === 0 ? "primary" : "secondary";
+          const theme = accentThemes[accent];
+
+          return (
+            <SurfaceCard
+              key={partner.name}
+              accent={accent}
+              className="flex h-full flex-col p-6"
             >
-              <div className="flex h-28 items-center justify-center rounded-2xl border border-slate-200/80 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
+              <div className="relative mx-auto aspect-square w-full max-w-52 overflow-hidden rounded-2xl border border-slate-200/80 bg-white/70 dark:border-white/10 dark:bg-white/5">
                 <Image
                   src={partner.logo}
                   alt={partner.name}
-                  width={200}
-                  height={100}
-                  className="h-auto max-h-16 w-auto object-contain"
+                  fill
+                  sizes="(min-width: 1280px) 13rem, (min-width: 768px) 40vw, 80vw"
+                  className="object-cover"
                 />
               </div>
               <p className="mt-6 text-2xl font-semibold text-primary dark:text-text-primary">
                 {partner.name}
               </p>
-              <p className="mt-3 text-sm leading-7 text-slate-700 sm:text-base dark:text-text-secondary">
+              <p className="mt-3 flex-1 text-sm leading-7 text-slate-700 sm:text-base dark:text-text-secondary">
                 {partner.description}
               </p>
-            </article>
-          ))}
-        </div>
-        <p className="mt-10 rounded-3xl border border-secondary/20 px-6 py-5 text-base leading-8 text-slate-700 shadow-[0_12px_30px_rgba(34,211,238,0.08)] dark:border-secondary/20 dark:text-text-secondary">
-          Send an Email on this email id ejs.{" "}
+              <Link
+                href={partner.linkedinUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={joinClasses(
+                  "mt-6 inline-flex w-fit rounded-2xl border px-4 py-3 font-semibold transition duration-200",
+                  theme.button
+                )}
+              >
+                LinkedIn Page
+              </Link>
+            </SurfaceCard>
+          );
+        })}
+      </div>
+      <OutlineCard accent="secondary" className="mt-10 px-6 py-5">
+        <p className="text-base leading-8 text-slate-700 dark:text-text-secondary">
+          Send an email to
           <Link
-            href="mailto:sciencejournal@gmail.com"
-            className="font-semibold text-primary transition duration-200 hover:text-secondary"
+            href={`mailto:${partnershipEmail}`}
+            className="ml-2 font-semibold text-primary transition duration-200 hover:text-secondary"
           >
-            mailto:sciencejournal@gmail.com
+            {partnershipEmail}
           </Link>{" "}
           to get partnered with us.
         </p>
-      </div>
-    </section>
+      </OutlineCard>
+    </Section>
   );
 }

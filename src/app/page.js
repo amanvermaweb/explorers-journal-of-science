@@ -1,12 +1,23 @@
 import About from "@/components/About";
 import Contact from "@/components/Contact";
+import EditorialBoard from "@/components/EditorialBoard";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
-import Partners from "@/components/Partners";
-import Team from "@/components/Team";
 import ParticlesBackground from "@/components/ParticlesBackground";
+import Partners from "@/components/Partners";
 import Research from "@/components/Research";
+import Team from "@/components/Team";
+
+const pageSections = [
+  Hero,
+  About,
+  Research,
+  Team,
+  EditorialBoard,
+  Partners,
+  Contact,
+];
 
 export default function Home() {
   return (
@@ -14,12 +25,11 @@ export default function Home() {
       <ParticlesBackground />
       <div className="relative">
         <Navbar />
-        <Hero />
-        <About />
-        <Research />
-        <Team />
-        <Partners />
-        <Contact />
+        <main>
+          {pageSections.map((SectionComponent) => (
+            <SectionComponent key={SectionComponent.name} />
+          ))}
+        </main>
         <Footer />
       </div>
     </div>

@@ -6,6 +6,13 @@ import { loadSlim } from "@tsparticles/slim";
 
 export default function ParticlesBackground() {
   const [isReady, setIsReady] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -13,6 +20,20 @@ export default function ParticlesBackground() {
     }).then(() => {
       setIsReady(true);
     });
+  }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const syncColorScheme = (event) => {
+      setIsDarkMode(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", syncColorScheme);
+
+    return () => {
+      mediaQuery.removeEventListener("change", syncColorScheme);
+    };
   }, []);
 
   const options = useMemo(
@@ -38,7 +59,7 @@ export default function ParticlesBackground() {
       },
       particles: {
         color: {
-          value: "#ffffff",
+          value: isDarkMode ? "#ffffff" : "#000000",
         },
         links: {
           enable: false,
@@ -51,18 +72,18 @@ export default function ParticlesBackground() {
           value: 45,
         },
         opacity: {
-          value: 0.7,
+          value: isDarkMode ? 0.7 : 0.55,
         },
         shape: {
           type: "circle",
         },
         size: {
-          value: { min: 1, max: 3 },
+          value: isDarkMode ? { min: 1, max: 3 } : { min: 1, max: 3.5 },
         },
       },
       detectRetina: true,
     }),
-    []
+    [isDarkMode]
   );
 
   if (!isReady) {
