@@ -9,18 +9,10 @@ const initialFormState = contactContent.form.fields.reduce((formState, field) =>
   return formState;
 }, {});
 
-function buildMailtoLink({ name, email, subject, message }) {
-  const mailSubject = subject.trim() || contactContent.form.defaultSubject;
-  const mailBody = [
-    `Name: ${name.trim()}`,
-    `Email: ${email.trim()}`,
-    "",
-    "Message:",
-    message.trim(),
-  ].join("\n");
-
-  return `mailto:${contactContent.email}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
-}
+const initialSubmissionState = {
+  status: "idle",
+  message: "",
+};
 
 function FieldLabel({ htmlFor, children }) {
   return (
@@ -69,6 +61,7 @@ function FormField({ field, value, onChange }) {
 
 export default function Contact() {
   const [formData, setFormData] = useState(initialFormState);
+  const [submissionState, setSubmissionState] = useState(initialSubmissionState);
   const topFields = contactContent.form.fields.slice(0, 2);
   const remainingFields = contactContent.form.fields.slice(2);
 
@@ -79,15 +72,59 @@ export default function Contact() {
       ...currentFormData,
       [name]: value,
     }));
+
+    setSubmissionState((currentState) =>
+      currentState.message
+        ? initialSubmissionState
+        : currentState
+    );
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
-    window.location.href = buildMailtoLink(formData);
+    setSubmissionState({
+      status: "submitting",
+      message: "",
+    });
 
-    setFormData(initialFormState);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const payload = await response.json();
+
+      if (!response.ok) {
+        setSubmissionState({
+          status: "error",
+          message: payload.message,
+        });
+        return;
+      }
+
+      setFormData(initialFormState);
+      setSubmissionState({
+        status: "success",
+        message: payload.message,
+      });
+    } catch {
+      setSubmissionState({
+        status: "error",
+        message: "Unable to send your message right now.",
+      });
+    }
   }
+
+  const isSubmitting = submissionState.status === "submitting";
+  const messageClassName =
+    submissionState.status === "error"
+      ? "text-rose-600 dark:text-rose-300"
+      : "text-emerald-700 dark:text-emerald-300";
 
   return (
     <Section id={contactContent.id} title={contactContent.title}>
@@ -151,11 +188,18 @@ export default function Contact() {
           <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <button
               type="submit"
-              className="inline-flex cursor-pointer items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-primary/30"
+              disabled={isSubmitting}
+              className="inline-flex cursor-pointer items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-600 disabled:cursor-not-allowed disabled:opacity-70 focus:outline-none focus:ring-2 focus:ring-primary/30"
             >
-              {contactContent.form.submitLabel}
+              {isSubmitting ? "Sending..." : contactContent.form.submitLabel}
             </button>
           </div>
+
+          {submissionState.message ? (
+            <p className={`mt-4 text-sm font-medium ${messageClassName}`}>
+              {submissionState.message}
+            </p>
+          ) : null}
         </SurfaceCard>
       </div>
     </Section>

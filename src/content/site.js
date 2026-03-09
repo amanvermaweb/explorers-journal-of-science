@@ -284,7 +284,7 @@ export const contactContent = {
         label: "Full Name",
         type: "text",
         autoComplete: "name",
-        placeholder: "Your name",
+        placeholder: "Full Name",
       },
       {
         id: "contact-email",

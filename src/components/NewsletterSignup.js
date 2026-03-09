@@ -98,7 +98,7 @@ export default function NewsletterSignup({ title, description, submitLabel }) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="inline-flex shrink-0 items-center justify-center rounded-full border border-primary bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:border-sky-600 hover:bg-sky-600 disabled:cursor-not-allowed disabled:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+            className="cursor-pointer inline-flex shrink-0 items-center justify-center rounded-full border border-primary bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:border-sky-600 hover:bg-sky-600 disabled:cursor-not-allowed disabled:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
           >
             {isSubmitting ? "Subscribing..." : submitLabel}
           </button>

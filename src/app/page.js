@@ -21,11 +21,11 @@ const pageSections = [
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-zinc-50 font-sans dark:bg-black">
+    <div className="relative min-h-[100dvh] bg-zinc-50 font-sans dark:bg-black">
       <ParticlesBackground />
-      <div className="relative">
+      <div className="relative flex min-h-[100dvh] flex-col">
         <Navbar />
-        <main>
+        <main className="flex-1">
           {pageSections.map((SectionComponent) => (
             <SectionComponent key={SectionComponent.name} />
           ))}

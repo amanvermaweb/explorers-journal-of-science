@@ -11,9 +11,13 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="footer" className="px-6 pb-12 pt-8 sm:px-10 lg:px-16">
-      <div className="mx-auto max-w-6xl">
-        <SurfaceCard as="div" accent="primary" className="p-8">
+    <footer id="footer" className="mt-auto w-full pt-4">
+      <div className="w-full">
+        <SurfaceCard
+          as="div"
+          accent="primary"
+          className="rounded-none border-x-0 border-b-0 p-8 sm:px-10 lg:px-16"
+        >
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
               <p className="text-2xl font-semibold text-primary dark:text-text-primary">
