@@ -1,4 +1,6 @@
 export const journalEmail = "ejs.sciencejournalteam@gmail.com";
+export const companyLinkedInUrl =
+  "https://www.linkedin.com/company/the-explorers-journal-of-science/";
 export const siteMetadata = {
   title: "The Explorer's Journal of Science",
   description: "A student-led STEM journal.",
@@ -10,6 +12,7 @@ export const navigationItems = [
   { href: "#research", label: "Research" },
   { href: "#team", label: "Team" },
   { href: "#editorial-board", label: "Editorial Board" },
+  { href: "#advisors", label: "Advisors" },
   { href: "#partners", label: "Partners" },
   { href: "#contact", label: "Contact" },
 ];
@@ -154,35 +157,42 @@ export const teamContent = {
   id: "team",
   title: "Team",
   intro:
-    "Meet the core student team behind the journal's planning, operations, outreach, and creative direction. These are placeholder profiles that can be replaced with real member details later.",
+    "Meet the core student team behind the journal's strategy, editorial direction, operations, outreach, and technology.",
   people: [
     {
-      name: "Lorem Ipsum",
-      role: "Founding Lead",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      linkedinUrl: "",
+      name: "Krishna Bansal",
+      role: "Chief Executive Officer",
+      linkedinUrl: "https://www.linkedin.com/in/krishna-bansal-627329378/",
     },
     {
-      name: "Maya Chen",
-      role: "Operations Coordinator",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      linkedinUrl: "",
+      name: "Akanksha",
+      role: "Editor in Chief",
+      linkedinUrl: "https://www.linkedin.com/in/akanksha-choudhury-30954b337/",
+      photo: "/akanksha-choudhury.jpeg",
     },
     {
-      name: "Noah Alvarez",
-      role: "Community and Outreach",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      linkedinUrl: "",
+      name: "Pratham Vohra",
+      role: "Chief Operating Officer",
+      linkedinUrl: "https://www.linkedin.com/in/prathamvohra/",
+      photo: "/pratham-vohra.png",
     },
     {
-      name: "Sofia Rahman",
-      role: "Design and Media",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      linkedinUrl: "",
+      name: "Aman Verma",
+      role: "Chief Technology Officer",
+      linkedinUrl: "https://www.linkedin.com/in/aman-verma-dev/",
+      photo: "/aman-verma.jpeg",
+    },
+    {
+      name: "Prisha Agarwal",
+      role: "Chief Marketing Officer",
+      linkedinUrl: "https://www.linkedin.com/in/prisha-agarwal-8953732a7/",
+      photo: "/prisha-agarwal.jpeg",
+    },
+    {
+      name: "Priyadharsni Murali",
+      role: "Partnership and Outreach Head",
+      linkedinUrl:
+        "https://www.linkedin.com/in/priyadharsni-murali-0b1443371/",
     },
   ],
 };
@@ -191,35 +201,44 @@ export const editorialBoardContent = {
   id: "editorial-board",
   title: "Editorial Board",
   intro:
-    "Our editorial board oversees review quality, publication standards, and communication with contributors. These are placeholder profiles ready to be replaced with real board members later.",
+    "Our editorial board oversees review quality, publication standards, and communication with contributors.",
   people: [
     {
-      name: "Lorem 1",
-      role: "Editor in Chief",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      linkedinUrl: "",
+      name: "Uthpala Kavindi",
+      role: "Senior Editor",
+      linkedinUrl: "https://www.linkedin.com/in/kavindi-rupasinghe-403b18195/",
+      photo: "/kavindi-rupasinghe.png",
     },
     {
-      name: "Lorem 2",
-      role: "Managing Editor",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      linkedinUrl: "",
+      name: "Jasmita Touti",
+      role: "Senior Editor",
+      linkedinUrl: "https://www.linkedin.com/in/jasmita-touti-7230a315b/",
+      photo: "/jasmita-touti.jpeg",
+    },
+  ],
+};
+
+export const advisorsContent = {
+  id: "advisors",
+  title: "Advisors",
+  intro:
+    "Our advisors bring expertise from education, scientific research, and industry to guide the journal's academic direction and long-term development.",
+  showProfileLinks: false,
+  people: [
+    {
+      name: "Dana Paquin",
+      role:
+        "Senior Mathematics Instructor and Director of Mathematics Curriculum at Stanford University",
+      photo: "/dana-paquin.jpeg",
     },
     {
-      name: "Lorem 3",
-      role: "Review Editor",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      linkedinUrl: "",
+      name: "Archana Sharma",
+      role: "Principal Physicist at CERN",
     },
     {
-      name: "Lorem 4",
-      role: "Communications Editor",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      linkedinUrl: "",
+      name: "Premjit Balasundaram",
+      role: "Project Executive at IBM",
+      photo: "/premjit-balasundaram.jpeg",
     },
   ],
 };
@@ -273,6 +292,11 @@ export const contactContent = {
       value: journalEmail,
       href: `mailto:${journalEmail}`,
     },
+    {
+      label: "LinkedIn",
+      value: "The Explorer's Journal of Science",
+      href: companyLinkedInUrl,
+    },
   ],
   form: {
     defaultSubject: "Explorer's Journal of Science inquiry",
@@ -316,4 +340,5 @@ export const contactContent = {
 export const footerContent = {
   tagline:
     "A student-led scientific journal designed to help young researchers publish with clarity, credibility, and global visibility.",
+  linkedinUrl: companyLinkedInUrl,
 };

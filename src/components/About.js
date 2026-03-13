@@ -68,18 +68,18 @@ const detailSections = [
 ];
 
 const detailCardClass =
-  "rounded-3xl border border-secondary/20 bg-white/85 px-4 py-4 shadow-[0_12px_28px_rgba(34,211,238,0.08)] dark:border-white/10 dark:bg-white/5";
+  "rounded-3xl border border-secondary/18 bg-linear-to-br from-[rgba(248,253,255,0.92)] to-[rgba(241,251,255,0.82)] px-4 py-4 shadow-[0_16px_32px_rgba(34,211,238,0.08)] ring-1 ring-white/60 transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(34,211,238,0.12)] dark:border-secondary/16 dark:bg-linear-to-br dark:from-[rgba(7,16,24,0.84)] dark:to-[rgba(11,31,40,0.72)] dark:ring-secondary/10";
 
 const detailBadgeClass =
-  "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-secondary/15 text-sm font-semibold text-sky-700 dark:bg-secondary/20 dark:text-text-primary";
+  "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl border border-secondary/14 bg-secondary/12 text-sm font-semibold text-sky-700 shadow-[0_8px_18px_rgba(34,211,238,0.08)] dark:bg-secondary/20 dark:text-text-primary";
 
 const detailBodyClass =
   "text-sm leading-6 text-slate-700 dark:text-text-secondary";
 
 function OverviewCard({ title, description }) {
   return (
-    <SurfaceCard accent="primary" className="group flex h-full flex-col p-7 hover:-translate-y-1">
-      <h3 className="text-2xl font-semibold text-primary dark:text-text-primary">
+    <SurfaceCard accent="primary" className="group flex h-full flex-col p-7 hover:-translate-y-1.5 hover:shadow-[0_28px_60px_rgba(59,130,246,0.14)]">
+      <h3 className="text-2xl font-bold tracking-[-0.04em] text-primary dark:text-text-primary">
         {title}
       </h3>
       <p className="mt-5 flex-1 text-sm leading-7 text-slate-700 sm:text-base dark:text-text-secondary">
@@ -105,8 +105,8 @@ function DetailItem({ index, title, description }) {
 
 function DetailSection({ title, items }) {
   return (
-    <SurfaceCard accent="secondary" className="group flex h-full flex-col p-7 hover:-translate-y-1">
-      <h3 className="text-2xl font-semibold text-primary dark:text-text-primary">
+    <SurfaceCard accent="secondary" className="group flex h-full flex-col p-7 hover:-translate-y-1.5 hover:shadow-[0_28px_60px_rgba(34,211,238,0.12)]">
+      <h3 className="text-2xl font-bold tracking-[-0.04em] text-primary dark:text-text-primary">
         {title}
       </h3>
       <div className="mt-6 grid flex-1 gap-4 sm:grid-cols-2">

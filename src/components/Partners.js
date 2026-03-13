@@ -22,9 +22,9 @@ export default function Partners() {
             <SurfaceCard
               key={partner.name}
               accent={accent}
-              className="flex h-full flex-col p-6"
+              className="flex h-full flex-col p-6 hover:-translate-y-1.5 hover:shadow-[0_28px_62px_rgba(15,23,42,0.09)]"
             >
-              <div className="relative mx-auto aspect-square w-full max-w-52 overflow-hidden rounded-2xl border border-slate-200/80 bg-white/70 dark:border-white/10 dark:bg-white/5">
+              <div className="relative mx-auto aspect-square w-full max-w-52 overflow-hidden rounded-2xl border border-primary/12 bg-linear-to-br from-[rgba(248,251,255,0.88)] to-[rgba(238,247,255,0.78)] shadow-[0_14px_34px_rgba(15,23,42,0.06)] dark:border-primary/14 dark:bg-linear-to-br dark:from-[rgba(7,14,24,0.82)] dark:to-[rgba(10,19,34,0.68)]">
                 <Image
                   src={partner.logo}
                   alt={partner.name}
@@ -33,7 +33,7 @@ export default function Partners() {
                   className="object-cover"
                 />
               </div>
-              <p className="mt-6 text-2xl font-semibold text-primary dark:text-text-primary">
+              <p className="mt-6 text-2xl font-bold tracking-[-0.04em] text-primary dark:text-text-primary">
                 {partner.name}
               </p>
               <p className="mt-3 flex-1 text-sm leading-7 text-slate-700 sm:text-base dark:text-text-secondary">
@@ -54,7 +54,7 @@ export default function Partners() {
           );
         })}
       </div>
-      <OutlineCard accent="secondary" className="mt-10 px-6 py-5">
+      <OutlineCard accent="secondary" className="mt-10 px-6 py-5 shadow-[0_18px_42px_rgba(34,211,238,0.08)]">
         <p className="text-base leading-8 text-slate-700 dark:text-text-secondary">
           Send an email to
           <Link

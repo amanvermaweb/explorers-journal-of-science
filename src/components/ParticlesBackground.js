@@ -59,26 +59,26 @@ export default function ParticlesBackground() {
       },
       particles: {
         color: {
-          value: isDarkMode ? "#ffffff" : "#000000",
+          value: isDarkMode ? "#f8fafc" : ["#3b82f6", "#22d3ee", "#60a5fa"],
         },
         links: {
           enable: false,
         },
         move: {
           enable: true,
-          speed: 0.8,
+          speed: isDarkMode ? 0.8 : 0.55,
         },
         number: {
           value: 45,
         },
         opacity: {
-          value: isDarkMode ? 0.7 : 0.55,
+          value: isDarkMode ? 0.7 : 0.34,
         },
         shape: {
           type: "circle",
         },
         size: {
-          value: isDarkMode ? { min: 1, max: 3 } : { min: 1, max: 3.5 },
+          value: isDarkMode ? { min: 1, max: 3 } : { min: 1, max: 2.8 },
         },
       },
       detectRetina: true,

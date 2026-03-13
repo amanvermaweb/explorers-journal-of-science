@@ -18,7 +18,7 @@ function FieldLabel({ htmlFor, children }) {
   return (
     <label
       htmlFor={htmlFor}
-      className="text-sm font-medium text-primary dark:text-text-primary"
+      className="text-sm font-semibold tracking-[0.01em] text-primary dark:text-text-primary"
     >
       {children}
     </label>
@@ -27,7 +27,7 @@ function FieldLabel({ htmlFor, children }) {
 
 function FormField({ field, value, onChange }) {
   const fieldClassName =
-    "w-full rounded-2xl border border-primary/15 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-white/10 dark:bg-white/5 dark:text-text-primary";
+    "w-full rounded-2xl border border-primary/16 bg-[rgba(251,253,255,0.94)] px-4 py-3 text-sm text-slate-900 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] outline-none transition duration-200 focus:-translate-y-0.5 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:shadow-[0_14px_26px_rgba(59,130,246,0.1)] dark:border-primary/14 dark:bg-[rgba(5,12,22,0.76)] dark:text-text-primary dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]";
 
   if (field.type === "textarea") {
     return (
@@ -130,7 +130,7 @@ export default function Contact() {
     <Section id={contactContent.id} title={contactContent.title}>
       <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
         <SurfaceCard accent="primary" className="p-8">
-          <h3 className="text-2xl font-semibold text-primary dark:text-text-primary">
+          <h3 className="text-2xl font-bold tracking-[-0.04em] text-primary dark:text-text-primary">
             {contactContent.heading}
           </h3>
           <p className="mt-4 max-w-md text-sm leading-7 text-slate-700 sm:text-base dark:text-text-secondary">
@@ -139,7 +139,7 @@ export default function Contact() {
 
           <div className="mt-8 space-y-5">
             {contactContent.methods.map((method) => (
-              <div key={method.label}>
+              <div key={method.label} className="rounded-2xl border border-primary/10 bg-white/38 px-4 py-4 shadow-[0_12px_28px_rgba(59,130,246,0.05)] dark:border-primary/14 dark:bg-linear-to-br dark:from-[rgba(7,14,24,0.78)] dark:to-[rgba(10,19,34,0.62)]">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-700 dark:text-secondary">
                   {method.label}
                 </p>
@@ -189,7 +189,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="inline-flex cursor-pointer items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-600 disabled:cursor-not-allowed disabled:opacity-70 focus:outline-none focus:ring-2 focus:ring-primary/30"
+              className="inline-flex cursor-pointer items-center justify-center rounded-full border border-primary bg-primary px-6 py-3 text-sm font-semibold text-white shadow-[0_14px_30px_rgba(59,130,246,0.24)] transition duration-200 hover:-translate-y-0.5 hover:bg-sky-600 hover:shadow-[0_18px_36px_rgba(59,130,246,0.3)] disabled:cursor-not-allowed disabled:opacity-70 focus:outline-none focus:ring-2 focus:ring-primary/30"
             >
               {isSubmitting ? "Sending..." : contactContent.form.submitLabel}
             </button>

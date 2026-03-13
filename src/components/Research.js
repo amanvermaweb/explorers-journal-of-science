@@ -12,8 +12,8 @@ function ResearchCard({ title, items, accent, ordered = false }) {
   const ListTag = ordered ? "ol" : "ul";
 
   return (
-    <OutlineCard accent={accent} className="p-6">
-      <h3 className="text-xl font-semibold text-primary dark:text-text-primary">
+    <OutlineCard accent={accent} className="p-6 hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(15,23,42,0.07)]">
+      <h3 className="text-xl font-bold tracking-[-0.035em] text-primary dark:text-text-primary">
         {title}
       </h3>
       <ListTag className="mt-4 space-y-3 text-sm leading-7 text-slate-700 sm:text-base dark:text-text-secondary">
@@ -59,7 +59,7 @@ export default function Research() {
           accent="secondary"
           className="flex flex-col items-center justify-center p-6 text-center md:col-span-2"
         >
-          <h3 className="text-xl font-semibold text-primary dark:text-text-primary">
+          <h3 className="text-xl font-bold tracking-[-0.035em] text-primary dark:text-text-primary">
             {submissionForm.title}
           </h3>
           <p className="mt-4 text-sm leading-7 text-slate-700 sm:text-base dark:text-text-secondary">
