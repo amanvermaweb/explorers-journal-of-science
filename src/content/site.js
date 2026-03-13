@@ -168,7 +168,7 @@ export const teamContent = {
       name: "Akanksha",
       role: "Editor in Chief",
       linkedinUrl: "https://www.linkedin.com/in/akanksha-choudhury-30954b337/",
-      photo: "/akanksha-choudhury.jpeg",
+      // photo: "/akanksha-choudhury.jpeg",
     },
     {
       name: "Pratham Vohra",
@@ -186,7 +186,7 @@ export const teamContent = {
       name: "Prisha Agarwal",
       role: "Chief Marketing Officer",
       linkedinUrl: "https://www.linkedin.com/in/prisha-agarwal-8953732a7/",
-      photo: "/prisha-agarwal.jpeg",
+      // photo: "/prisha-agarwal.jpeg",
     },
     {
       name: "Priyadharsni Murali",
@@ -207,13 +207,13 @@ export const editorialBoardContent = {
       name: "Uthpala Kavindi",
       role: "Senior Editor",
       linkedinUrl: "https://www.linkedin.com/in/kavindi-rupasinghe-403b18195/",
-      photo: "/kavindi-rupasinghe.png",
+      // photo: "/kavindi-rupasinghe.png",
     },
     {
       name: "Jasmita Touti",
       role: "Senior Editor",
       linkedinUrl: "https://www.linkedin.com/in/jasmita-touti-7230a315b/",
-      photo: "/jasmita-touti.jpeg",
+      // photo: "/jasmita-touti.jpeg",
     },
   ],
 };
