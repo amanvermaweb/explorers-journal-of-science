@@ -12,7 +12,9 @@ export async function POST(request) {
       { message: result.message },
       { status: result.status }
     );
-  } catch {
+  } catch (error) {
+    console.error("Newsletter API request failed.", error);
+
     return NextResponse.json(
       { message: "Unable to process your subscription right now." },
       { status: 500 }

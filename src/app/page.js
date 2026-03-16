@@ -5,7 +5,6 @@ import EditorialBoard from "@/components/EditorialBoard";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
-import ParticlesBackground from "@/components/ParticlesBackground";
 import Partners from "@/components/Partners";
 import Research from "@/components/Research";
 import Team from "@/components/Team";

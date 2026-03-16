@@ -12,7 +12,9 @@ export async function POST(request) {
       { message: result.message },
       { status: result.status }
     );
-  } catch {
+  } catch (error) {
+    console.error("Contact API request failed.", error);
+
     return NextResponse.json(
       { message: "Unable to send your message right now." },
       { status: 500 }
