@@ -1,24 +1,13 @@
-import path from "node:path";
 import { journalEmail } from "@/content/site";
-import { readJsonArray, writeJsonFile } from "@/lib/jsonStore";
+import {
+  ensureNeonSchema,
+  insertNewsletterSubscriber,
+  newsletterSubscriberExists,
+} from "@/lib/neon";
 import { trySendPlainTextEmail } from "@/lib/sendmail";
-
-const subscribersFilePath = path.join(
-  process.cwd(),
-  "data",
-  "newsletter-subscribers.json"
-);
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-async function readSubscribers() {
-  return readJsonArray(subscribersFilePath);
-}
-
-async function writeSubscribers(subscribers) {
-  await writeJsonFile(subscribersFilePath, subscribers);
 }
 
 async function sendSubscriptionNotification({ email, subscribedAt }) {
@@ -61,9 +50,10 @@ export async function subscribeToNewsletter(rawEmail) {
     };
   }
 
-  const subscribers = await readSubscribers();
+  await ensureNeonSchema();
+  const alreadySubscribed = await newsletterSubscriberExists(email);
 
-  if (subscribers.some((subscriber) => subscriber.email === email)) {
+  if (alreadySubscribed) {
     return {
       ok: false,
       status: 409,
@@ -76,12 +66,7 @@ export async function subscribeToNewsletter(rawEmail) {
     subscribedAt: new Date().toISOString(),
   };
 
-  const nextSubscribers = [
-    ...subscribers,
-    subscriptionRecord,
-  ];
-
-  await writeSubscribers(nextSubscribers);
+  await insertNewsletterSubscriber(subscriptionRecord);
   await sendSubscriptionNotification(subscriptionRecord);
 
   return {

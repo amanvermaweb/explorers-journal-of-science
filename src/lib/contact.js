@@ -1,13 +1,6 @@
-import path from "node:path";
 import { contactContent, journalEmail } from "@/content/site";
-import { readJsonArray, writeJsonFile } from "@/lib/jsonStore";
+import { ensureNeonSchema, insertContactSubmission } from "@/lib/neon";
 import { trySendPlainTextEmail } from "@/lib/sendmail";
-
-const contactSubmissionsFilePath = path.join(
-  process.cwd(),
-  "data",
-  "contact-submissions.json"
-);
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -83,7 +76,6 @@ export async function submitContactForm(payload) {
     };
   }
 
-  const existingSubmissions = await readJsonArray(contactSubmissionsFilePath);
   const submissionRecord = {
     name,
     email,
@@ -92,10 +84,8 @@ export async function submitContactForm(payload) {
     submittedAt: new Date().toISOString(),
   };
 
-  await writeJsonFile(contactSubmissionsFilePath, [
-    ...existingSubmissions,
-    submissionRecord,
-  ]);
+  await ensureNeonSchema();
+  await insertContactSubmission(submissionRecord);
 
   await sendContactNotification(submissionRecord);
 
